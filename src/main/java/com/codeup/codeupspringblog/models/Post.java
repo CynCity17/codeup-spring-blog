@@ -2,8 +2,6 @@ package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
-
 
 @Entity
 @Table(name="posts")

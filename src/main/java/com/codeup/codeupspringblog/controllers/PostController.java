@@ -20,25 +20,24 @@ public class PostController {
 
     @GetMapping("/posts")
     public String allPosts(Model model) {
-        List<Post> allPosts = postsDao.findAll();
-        model.addAttribute("allPosts", allPosts);
+        List<Post> posts = postsDao.findAll();
+        model.addAttribute("posts", posts);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String onePost(@PathVariable long id, Model model) {
+    public String individualPost(@PathVariable long id, Model model) {
         Post post = postsDao.findById(id);
         model.addAttribute("post", post);
         return "posts/show";
     }
 
-    @GetMapping("/posts/create")
-    public String createPost() {
-        return "/posts/create";
+    @GetMapping("/posts-form")
+    public String createForm() {
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
     public String submitPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
         Post post = new Post(title, body);
         postsDao.save(post);
