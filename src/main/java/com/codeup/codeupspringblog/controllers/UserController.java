@@ -1,16 +1,16 @@
 package com.codeup.codeupspringblog.controllers;
 
+
 import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 public class UserController {
 
-    private final UserRepository usersDao;
+    private UserRepository usersDao;
 
     public UserController(UserRepository usersDao){
         this.usersDao = usersDao;

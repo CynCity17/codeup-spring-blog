@@ -17,6 +17,10 @@ public class Post {
     @Column(nullable = false, length = 500)
     private String body;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    private User user;
+
     public Post(){
 
     }
@@ -31,6 +35,8 @@ public class Post {
         this.title = title;
         this.body = body;
     }
+
+
 
     public long getId() {
         return id;
@@ -54,5 +60,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public User getUser(){
+        return user;
+    }
+
+    public void setUser(User user){
+        this.user = user;
     }
 }

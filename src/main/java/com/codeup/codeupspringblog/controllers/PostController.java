@@ -26,9 +26,10 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String individualPost(@PathVariable long id, Model model) {
+    public String individualPost(@PathVariable long id, Model model){
         Post post = postsDao.findById(id);
         model.addAttribute("post", post);
+        model.addAttribute("email", post.getUser().getEmail());
         return "posts/show";
     }
 
