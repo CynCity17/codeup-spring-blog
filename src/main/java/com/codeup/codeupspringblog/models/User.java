@@ -2,7 +2,6 @@ package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
 
-import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @Entity

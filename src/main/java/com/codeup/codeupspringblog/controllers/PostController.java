@@ -52,10 +52,17 @@ public class PostController {
     }
 
     @GetMapping("/posts/{id}")
-    public String individualPost(@PathVariable long id, Model model){
+    public String individualPost(@PathVariable long id, Model model) {
         Post post = postsDao.findById(id);
         model.addAttribute("post", post);
-        model.addAttribute("email", post.getUser().getEmail());
+
+        User user = post.getUser();
+        if (user != null) {
+            model.addAttribute("email", user.getEmail());
+        } else {
+            model.addAttribute("email", "No user");
+        }
+
         return "posts/show";
     }
 

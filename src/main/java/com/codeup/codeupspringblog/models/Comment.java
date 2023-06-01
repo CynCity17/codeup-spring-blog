@@ -3,7 +3,7 @@ package com.codeup.codeupspringblog.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="comments")
+@Table(name = "comments")
 public class Comment {
 
     @Id
