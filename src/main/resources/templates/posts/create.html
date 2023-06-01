@@ -5,16 +5,18 @@
     <title>The Post It</title>
 </head>
 <body>
-<h1>POST IT!</h1>
-<h2>Do it NOW!</h2>
-<form action="/posts/create" method="post">
-  <label for="title">Title:</label>
-  <input type="text" name="title" id="title">
-    <br>
-  <label for="body">Body:</label>
-  <textarea name="body" id="body" rows="10" cols="35"></textarea>
-    <br>
-  <button>Submit</button>
-</form>
+    <h1>POST IT!</h1>
+    <h2>Do it NOW!</h2>
+    <form action="/posts/create" method="post">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title">
+            <br>
+        <label for="body">Body:</label>
+        <textarea name="body" id="body" rows="10" cols="35"></textarea>
+            <br>
+        <label for="categories">Enter a list of categories separated by commas</label>
+        <input type="text" name="categories" id="categories">
+        <button>Submit</button>
+    </form>
 </body>
 </html>

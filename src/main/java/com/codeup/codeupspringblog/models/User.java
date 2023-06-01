@@ -2,6 +2,7 @@ package com.codeup.codeupspringblog.models;
 
 import jakarta.persistence.*;
 
+import javax.xml.stream.events.Comment;
 import java.util.List;
 
 @Entity
@@ -24,6 +25,9 @@ public class User {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
     private List<Post> posts;
 
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    private List<Comment> comments;
+
     public User(){
     }
     public User(String username, String email, String password) {
@@ -37,6 +41,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.posts = posts;
+    }
+
+    public User(String username, String email, String password, List<Post> posts, List<Comment> comments) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.posts = posts;
+        this.comments = comments;
     }
 
     public long getId() {
@@ -76,5 +88,13 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

@@ -10,5 +10,11 @@
         <p th:text="${post.body}"></p>
         <p th:text="${email}"></p>
     </div>
+    <form action="/posts/comment" method="post">
+        <label for="content">Comment:</label>
+        <textarea name="content" id="content" rows="10" cols="20"></textarea>
+        <input type="hidden" name="postId" th:value="${post.id}">
+        <button>Submit</button>
+    </form>
 </body>
 </html>
