@@ -67,20 +67,21 @@ public class PostController {
     }
 
     @GetMapping("/posts-form")
-    public String createForm() {
+    public String createForm(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String submitForm(@RequestParam(name="title") String title, @RequestParam(name="body") String body, @RequestParam(name="categories") String categories) {
+    public String submitForm(@ModelAttribute("post") Post post, @RequestParam("categories") String categories) {
         User user = usersDao.findUserById(1L);
-        Post post = new Post(title, body, user);
+        post.setUser(user);
         Set<Category> categorySet = makeCategorySet(categories);
-        if (categorySet.size() > 0){
+        if (!categorySet.isEmpty()) {
             List<Category> categoriesToAdd = new ArrayList<>();
-            for (Category category : categorySet){
+            for (Category category : categorySet) {
                 Category categoryFromDb = categoriesDao.findCategoryByName(category.getName());
-                if (categoryFromDb == null){
+                if (categoryFromDb == null) {
                     categoriesToAdd.add(category);
                 } else {
                     categoriesToAdd.add(categoryFromDb);
@@ -93,6 +94,7 @@ public class PostController {
         postsDao.save(post);
         return "redirect:/posts";
     }
+
 
     @PostMapping("/posts/comment")
     public String submitComment(@RequestParam(name="content") String content, @RequestParam(name="postId") long postId){

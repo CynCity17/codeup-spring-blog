@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="partials/head :: head">
-    <meta charset="UTF-8">
-    <title>Post-A-Vaganza</title>
-</head>
+<head th:replace="partials/head :: head"></head>
 <body>
-<nav th:replace="partials/navbar :: navbar"></nav>
-    <h1>Explore our Post-A-Vaganza</h1>
-    <ul>
-        <li th:each="post : ${posts}">
-            <a th:href="@{|/posts/${post.id}|}"><h2 th:text="${post.title}"></h2></a>
-            <p th:text="${post.body}"></p>
-            <p th:if="${post.user != null}" th:text="${post.user.email}"></p>
-            <p th:unless="${post.user != null}">No user</p>
-            <div th:if="${post.comments.size()>0}">
-                <h3>Comments</h3>
-                <ul>
-                    <li th:each="comment: ${post.comments}">
-                        <p th:text="${comment.content}"></p>
-                    </li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-<footer th:replace="partials/footer :: footer"></footer>
+<div class="page-wrapper gap-20">
+    <header th:replace="partials/navbar :: navbar"></header>
+    <div class="container gap-20">
+        <div class="row">
+            <h1>Explore our Post-A-Vaganza</h1>
+        </div>
+        <div class="row">
+            <ul class="post-grid">
+                <li th:each="post : ${posts}">
+                    <a th:href="@{|/posts/${post.id}|}"><h2 th:text="${post.title}"></h2></a>
+                    <p th:text="${post.body}"></p>
+                    <p th:if="${post.user != null}" th:text="${post.user.email}"></p>
+                    <p th:unless="${post.user != null}">No user</p>
+                    <div th:if="${post.comments.size()>0}">
+                        <h3>Comments</h3>
+                        <ul>
+                            <li th:each="comment: ${post.comments}">
+                                <p th:text="${comment.content}"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer th:replace="partials/footer :: footer"></footer>
+</div>
 </body>
 </html>

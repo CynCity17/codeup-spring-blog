@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>The Post It</title>
-</head>
-<body>
-    <h1>POST IT!</h1>
-    <h2>Do it NOW!</h2>
-    <form action="/posts/create" method="post">
-        <label for="title">Title:</label>
-        <input type="text" name="title" id="title">
-            <br>
-        <label for="body">Body:</label>
-        <textarea name="body" id="body" rows="10" cols="35"></textarea>
-            <br>
-        <label for="categories">Enter a list of categories separated by commas</label>
-        <input type="text" name="categories" id="categories">
-        <button>Submit</button>
-    </form>
-</body>
+<head th:repalce="partials/head :: head"></head>
+    <div class="page-wrapper">
+    <header th:repalce="partials/navbar :: navbar"></header>
+    <body>
+    <div class="container grow justify-center">
+        <div class="row justify-center">
+            <div class="column shrink">
+                <h1>POST IT!</h1>
+                <h2>Do it NOW!</h2>
+                <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+                   <div class="input-wrapper">
+                       <label for="title">Title:</label>
+                       <input type="text" name="title" id="title" th:field="*{title}">
+                   </div>
+                    <div class="input-wrapper">
+                        <label for="body">Body:</label>
+                        <textarea name="body" id="body" rows="10" cols="35" th:field="*{body}"></textarea>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="categories">Enter a list of categories separated by commas</label>
+                        <input type="text" name="categories" id="categories" th:field="*{categories}">
+                    </div>
+                    <input type="hidden" th:field="*{user}">
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+</div>
 </html>

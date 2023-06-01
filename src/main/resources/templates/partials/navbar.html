@@ -1,5 +1,36 @@
-<nav th:fragment="navbar">
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/roll-dice}">Dice Roll</a>
-    <a th:href="@{/posts}">Posts</a>
-</nav>
+<header th:fragment="navbar" class="container">
+    <div class="row grow">
+        <div class="column shrink justify-center">
+            LOGO HERE
+        </div>
+        <div class="column align-right">
+            <nav>
+                <ul>
+                    <li>
+                        <a th:href="@{/}">Home</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/posts}">Posts</a>
+                        <ul>
+                            <li>
+                                <a th:href="@{/posts}">View All</a>
+                            </li>
+                            <li>
+                                <a th:href="@{#}">My Posts</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/posts/create}">Create Post</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a th:href="@{/posts-form}">Create Post</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/roll-dice}">Dice Roll</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
