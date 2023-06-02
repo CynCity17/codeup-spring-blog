@@ -173,15 +173,16 @@ header.container nav ul > li > ul > li:hover > a {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px;
 }
-
 .column.post {
     gap: 10px;
     padding: 15px;
     background-color: rgba(0,0,0,0.2);
     border-radius: 3px;
-    min-height: 300px;
+}
+.column.post img.post-thumbnail {
+    border-radius: 3px;
+    height: 200px;
 }
 .column.post h2 {
     text-transform: uppercase;
@@ -190,5 +191,38 @@ header.container nav ul > li > ul > li:hover > a {
     color: rgba(255,255,255,0.8);
     font-size: 0.8rem;
     line-height: 1.5;
+}
+.column.post p.excerpt {
+    flex: 0 0 77px;
+    overflow: hidden;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 98%, rgba(255,255,255,0) 100%)
+}
+.column.post img.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+}
+.column.post a:has(p.read-more) {
+    align-self: start;
+}
+.column.post p.read-more {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.6rem;
+    opacity: .5;
+    transition: opacity ease .3s;
+}
+.column.post p.read-more:hover {
+    opacity: 1;
+}
+.column.post p.comments {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.6rem;
 }
 
