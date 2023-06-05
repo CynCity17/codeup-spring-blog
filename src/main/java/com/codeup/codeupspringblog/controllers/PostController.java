@@ -111,6 +111,7 @@ public class PostController {
             post.setCategories(categorySet);
         }
         postsDao.save(post);
+        emailService.prepareAndSend(post, "A new post has been POSTED", "The message would go here, and be much cooler if I wanted.", "jason.merrell@codeup.com");
         return "redirect:/posts";
     }
 
