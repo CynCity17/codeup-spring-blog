@@ -12,7 +12,7 @@
             <ul class="post-grid">
                 <li th:each="post : ${posts}">
                     <a th:href="@{|/posts/${post.id}|}">
-                        <img th:src="@{'https://picsum.phtotos/id/' + ${post.id} + '/340/200'}" alt="Post thumbnail" class="post-thumbnail">
+                        <img th:src="@{'https://picsum.photos/id/' + ${post.id} + '/340/200'}" alt="Post thumbnail" class="post-thumbnail">
                     </a>
                     <a th:href="@{|/posts/${post.id}|}"><h2 th:text="${post.title}"></h2></a>
                     <p th:text="${post.body}" class="excerpt"></p>
